@@ -232,7 +232,7 @@
 //   )
 // }
 'use client'
-export const dynamic = 'force-dynamic'
+
 import { useState, useTransition } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
@@ -242,6 +242,7 @@ import { Button }    from '@/components/ui/Button'
 import { verifyOtpMock as verifyOtp, sendOtpMock as sendOtp, DEMO_OTP } from '@/lib/mock'
 import type { AuthIntent } from '@/types/auth'
 import { cn } from '@/lib/cn'
+import SuspenseWrapper from '@/components/SuspenseWrapper'
 
 /**
  * /verify-email
@@ -310,6 +311,7 @@ export default function VerifyEmailPage() {
   const maskedEmail = email.replace(/^(.)(.*)(@.+)$/, (_, a, _b, c) => `${a}***${c}`)
 
   return (
+    <SuspenseWrapper>
     <AuthShell
       eyebrow={intent === 'signup' ? 'Step 2 of 2' : undefined}
       title="Check your inbox"
@@ -362,5 +364,6 @@ export default function VerifyEmailPage() {
         🛠 Mock mode — use code <span className="text-[#00E87A] font-mono">{DEMO_OTP}</span>
       </p>
     </AuthShell>
+    </SuspenseWrapper>
   )
 }

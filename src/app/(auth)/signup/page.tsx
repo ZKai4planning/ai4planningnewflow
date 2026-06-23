@@ -12,6 +12,7 @@ import { Button }           from '@/components/ui/Button'
 import { sendOtp }          from '@/lib/api'
 import { cn }               from '@/lib/cn'
 import type { FieldState }  from '@/types/auth'
+import SuspenseWrapper from '@/components/SuspenseWrapper'
 
 /**
  * /signup
@@ -86,6 +87,7 @@ export default function SignupPage() {
   }
 
   return (
+    <SuspenseWrapper>
     <AuthShell
       title="Create your account"
       subtitle="Free to start. Your planning goal is saved."
@@ -181,6 +183,7 @@ export default function SignupPage() {
         </p>
       </form>
     </AuthShell>
+    </SuspenseWrapper>
   )
 }
 

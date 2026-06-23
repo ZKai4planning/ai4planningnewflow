@@ -9,6 +9,7 @@ import { AuthInput }      from '@/components/auth/AuthInput'
 import { Button }         from '@/components/ui/Button'
 import { forgotPassword } from '@/lib/api'
 import type { FieldState } from '@/types/auth'
+import SuspenseWrapper from '@/components/SuspenseWrapper'
 
 /**
  * /forgot-password
@@ -69,6 +70,7 @@ export default function ForgotPasswordPage() {
   }
 
   return (
+    <SuspenseWrapper>
     <AuthShell
       title="Reset your password"
       subtitle="Enter your account email and we'll send you a reset code."
@@ -123,5 +125,6 @@ export default function ForgotPasswordPage() {
         </form>
       )}
     </AuthShell>
+    </SuspenseWrapper>
   )
 }

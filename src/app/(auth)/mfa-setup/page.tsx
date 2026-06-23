@@ -1,5 +1,5 @@
 'use client'
-export const dynamic = 'force-dynamic'
+
 import { useState, useTransition, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
@@ -8,6 +8,7 @@ import { OtpBoxes }   from '@/components/auth/OtpBoxes'
 import { Button }     from '@/components/ui/Button'
 import { setupMfaMock as setupMfa, verifyMfaMock as verifyMfa } from '@/lib/mock'
 import { cn } from '@/lib/cn'
+import SuspenseWrapper from '@/components/SuspenseWrapper'
 
 /**
  * /mfa-setup
@@ -68,6 +69,7 @@ export default function MfaSetupPage() {
   // ── DONE screen ──────────────────────────────────────────────────
   if (step === 'done') {
     return (
+      <SuspenseWrapper>
       <AuthShell
         title="MFA enabled 🎉"
         subtitle="Your account is now protected with two-factor authentication."
@@ -94,6 +96,7 @@ export default function MfaSetupPage() {
           </Button>
         </div>
       </AuthShell>
+      </SuspenseWrapper>
     )
   }
 

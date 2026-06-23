@@ -1,5 +1,5 @@
 'use client'
-export const dynamic = 'force-dynamic'
+
 import { useState, useTransition } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
@@ -8,6 +8,7 @@ import { OtpBoxes }  from '@/components/auth/OtpBoxes'
 import { Button }    from '@/components/ui/Button'
 import { verifyMfaMock as verifyMfa } from '@/lib/mock'
 import { cn } from '@/lib/cn'
+import SuspenseWrapper from '@/components/SuspenseWrapper'
 
 /**
  * /mfa-verify
@@ -47,6 +48,7 @@ export default function MfaVerifyPage() {
   const maskedEmail = email.replace(/^(.)(.*)(@.+)$/, (_, a, _b, c) => `${a}***${c}`)
 
   return (
+    <SuspenseWrapper>
     <AuthShell
       title="Two-factor authentication"
       subtitle={
@@ -87,5 +89,6 @@ export default function MfaVerifyPage() {
         🛠 Mock mode — any valid 6-digit number works
       </p>
     </AuthShell>
+    </SuspenseWrapper>
   )
 }

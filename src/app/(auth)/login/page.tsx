@@ -121,7 +121,7 @@
 // }
 
 'use client'
-export const dynamic = 'force-dynamic'
+
 
 import { useState, useTransition } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -132,6 +132,7 @@ import { AuthInput } from '@/components/auth/AuthInput'
 import { Button }    from '@/components/ui/Button'
 import { sendOtpMock as sendOtp } from '@/lib/mock'   // ← swap to '@/lib/api' for prod
 import { cn }        from '@/lib/cn'
+import SuspenseWrapper from '@/components/SuspenseWrapper'
 
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
@@ -163,6 +164,7 @@ export default function LoginPage() {
   }
 
   return (
+    <SuspenseWrapper>
     <AuthShell
       title="Welcome back"
       subtitle="Enter your email and we'll send you a sign-in code."
@@ -199,5 +201,6 @@ export default function LoginPage() {
         🛠 Mock mode — OTP code is <span className="text-[#00E87A] font-mono">123456</span>
       </p>
     </AuthShell>
+    </SuspenseWrapper>
   )
 }
