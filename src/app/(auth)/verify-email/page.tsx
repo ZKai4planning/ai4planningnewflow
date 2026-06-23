@@ -232,7 +232,7 @@
 //   )
 // }
 'use client'
-
+export const dynamic = 'force-dynamic'
 import { useState, useTransition } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
