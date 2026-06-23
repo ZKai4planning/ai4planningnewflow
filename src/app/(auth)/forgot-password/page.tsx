@@ -5,6 +5,8 @@ import ForgotPasswordClient from "./ForgotPasswordClient"
 
 
 
+
+
 // import ForgotPasswordClient from "./ForgotPasswordClient"
 
 // import { useState, useTransition } from 'react'
@@ -136,8 +138,6 @@ import ForgotPasswordClient from "./ForgotPasswordClient"
 // }
 
 
-
-
 export default function ForgotPasswordPage({
   searchParams,
 }: {
@@ -151,3 +151,4 @@ export default function ForgotPasswordPage({
     />
   )
 }
+
